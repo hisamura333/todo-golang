@@ -1,0 +1,29 @@
+<body>
+<h2>詳細</h2>
+
+<p>{{.user.ID}}</p>
+<p>{{.user.Name}}</p>
+<p>{{.user.Age}}</p>
+
+<form method="post" action="/update/{{.todo.ID}}">
+    <p>内容<input type="text" name="text" size="30" value="{{.todo.Text}}" ></p>
+    <p>状態
+        <select name="status">
+            {{if eq .todo.Status "未実行"}}
+                <option value="NotExecuted" selected>未実行</option>
+                <option value="Running">実行中</option>
+                <option value="Exit">終了</option>
+            {{else if eq .todo.Status "実行中"}}
+                <option value="NotExecuted">未実行</option>
+                <option value="Running" selected>実行中</option>
+                <option value="Exit">終了</option>
+            {{else}}
+                <option value="NotExecuted">未実行</option>
+                <option value="Running">実行中</option>
+                <option value="Exit" selected>終了</option>
+            {{end}}
+        </select>
+    </p>
+    <p><input type="submit" value="Send"></p>
+</form>
+</body>
